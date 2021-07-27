@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 class TaskController extends Controller
 {
     /**
-     * @return Task[]\Illuminate\Database\Eloquent\Collection
+     * Task一覧
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
      */
 
     public function index()
