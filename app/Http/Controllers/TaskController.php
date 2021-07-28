@@ -19,14 +19,16 @@ class TaskController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-        //
+        $task = Task::create($request->all());
+
+        return $task
+        ? response()->json($task, 201)
+        : response()->json([], 500);
     }
 
     /**
