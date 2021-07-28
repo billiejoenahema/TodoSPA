@@ -15,10 +15,24 @@ class TaskTest extends TestCase
      */
     public function get_tasks()
     {
-      $tasks = Task::factory()->count(10)->create();
-      $response = $this->getJson('api/tasks');
+        $tasks = Task::factory()->count(10)->create();
+        $response = $this->getJson('api/tasks');
 
-      $response->assertStatus(200)
-        ->assertJsonCount($tasks->count());
+        $response
+            ->assertStatus(200)
+            ->assertJsonCount($tasks->count());
+    }
+
+    /**
+     * @test
+     */
+    public function create_task()
+    {
+        $data = ['title' => 'テスト投稿'];
+
+        $response = $this->postJson('api/tasks', $data);
+        $response
+            ->assertStatus(201)
+            ->assertJsonFragment($data);
     }
 }
