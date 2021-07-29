@@ -30,7 +30,7 @@ class TaskTest extends TestCase
     {
         $data = ['title' => 'テスト投稿'];
 
-        $response = $this->postJson('api/tasks', $data);
+        $response = $this->postJson("api/tasks", $data);
         $response
             ->assertStatus(201)
             ->assertJsonFragment($data);
@@ -48,5 +48,18 @@ class TaskTest extends TestCase
         $response
             ->assertOk()
             ->assertJsonFragment($task->toArray());
+    }
+
+        /**
+     * @test
+     */
+    public function delete_task()
+    {
+        $tasks = Task::factory()->count(10)->create();
+
+        $response = $this->deleteJson("api/tasks/1");
+        $response->assertOk();
+        $response = $this->getJson("api/tasks");
+        $response->assertJsonCount($tasks->count() -1);
     }
 }
