@@ -16,7 +16,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $title
- * @property int $is_done
+ * @property bool $is_done
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Database\Factories\TaskFactory factory(...$parameters)
