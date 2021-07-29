@@ -35,4 +35,18 @@ class TaskTest extends TestCase
             ->assertStatus(201)
             ->assertJsonFragment($data);
     }
+
+    /**
+     * @test
+     */
+    public function update_task()
+    {
+        $task = Task::factory()->create();
+        $task->title = '書き換え';
+
+        $response = $this->patchJson("api/tasks/{$task->id}", $task->toArray());
+        $response
+            ->assertOk()
+            ->assertJsonFragment($task->toArray());
+    }
 }
