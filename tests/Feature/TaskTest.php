@@ -77,4 +77,19 @@ class TaskTest extends TestCase
               'title' => 'タイトルは、必ず指定してください。'
             ]);
     }
+
+    /**
+     * @test
+     */
+    public function prevent_over_character_limit()
+    {
+        $data = ['title' => str_repeat('あ', 256)];
+
+        $response = $this->postJson("api/tasks", $data);
+        $response
+            ->assertStatus(422)
+            ->assertJsonValidationErrors([
+              'title' => 'タイトルは、255文字以下にしてください。'
+            ]);
+    }
 }
