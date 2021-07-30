@@ -50,7 +50,7 @@ class TaskTest extends TestCase
             ->assertJsonFragment($task->toArray());
     }
 
-        /**
+    /**
      * @test
      */
     public function delete_task()
@@ -61,5 +61,20 @@ class TaskTest extends TestCase
         $response->assertOk();
         $response = $this->getJson("api/tasks");
         $response->assertJsonCount($tasks->count() -1);
+    }
+
+    /**
+     * @test
+     */
+    public function prevent_null_title()
+    {
+        $data = ['title' => ''];
+
+        $response = $this->postJson("api/tasks", $data);
+        $response
+            ->assertStatus(422)
+            ->assertJsonValidationErrors([
+              'title' => 'タイトルは、必ず指定してください。'
+            ]);
     }
 }
