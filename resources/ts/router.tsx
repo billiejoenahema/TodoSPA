@@ -5,6 +5,9 @@ import {
   Route,
   Link
 } from "react-router-dom"
+import TaskPage from './pages/tasks'
+import LoginPage from './pages/login'
+import HelpPage from './pages/help'
 
 const router = () => {
   return (
@@ -16,39 +19,27 @@ const router = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/login">Login</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/help">Help</Link>
             </li>
           </ul>
         </nav>
         <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
           <Route path="/">
-            <Home />
+            <TaskPage />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <Route path="/help">
+            <HelpPage />
           </Route>
         </Switch>
       </div>
     </BrowserRouter>
   )
-}
-
-function Home() {
-  return <h2>Home</h2>
-}
-
-function About() {
-  return <h2>About</h2>
-}
-
-function Users() {
-  return <h2>Users</h2>
 }
 
 export default router

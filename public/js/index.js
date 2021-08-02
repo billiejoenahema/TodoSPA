@@ -163,6 +163,93 @@ react_dom_1["default"].render(react_1["default"].createElement(App_1["default"],
 
 /***/ }),
 
+/***/ "./resources/ts/pages/help/index.tsx":
+/*!*******************************************!*\
+  !*** ./resources/ts/pages/help/index.tsx ***!
+  \*******************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var HelpPage = function HelpPage() {
+  return react_1["default"].createElement("h1", null, "Help Page");
+};
+
+exports.default = HelpPage;
+
+/***/ }),
+
+/***/ "./resources/ts/pages/login/index.tsx":
+/*!********************************************!*\
+  !*** ./resources/ts/pages/login/index.tsx ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var LoginPage = function LoginPage() {
+  return react_1["default"].createElement("h1", null, "Login Page");
+};
+
+exports.default = LoginPage;
+
+/***/ }),
+
+/***/ "./resources/ts/pages/tasks/index.tsx":
+/*!********************************************!*\
+  !*** ./resources/ts/pages/tasks/index.tsx ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var TaskPage = function TaskPage() {
+  return react_1["default"].createElement("h1", null, "Task Page");
+};
+
+exports.default = TaskPage;
+
+/***/ }),
+
 /***/ "./resources/ts/router.tsx":
 /*!*********************************!*\
   !*** ./resources/ts/router.tsx ***!
@@ -186,33 +273,27 @@ var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/r
 
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
+var tasks_1 = __importDefault(__webpack_require__(/*! ./pages/tasks */ "./resources/ts/pages/tasks/index.tsx"));
+
+var login_1 = __importDefault(__webpack_require__(/*! ./pages/login */ "./resources/ts/pages/login/index.tsx"));
+
+var help_1 = __importDefault(__webpack_require__(/*! ./pages/help */ "./resources/ts/pages/help/index.tsx"));
+
 var router = function router() {
   return react_1["default"].createElement(react_router_dom_1.BrowserRouter, null, react_1["default"].createElement("div", null, react_1["default"].createElement("nav", null, react_1["default"].createElement("ul", null, react_1["default"].createElement("li", null, react_1["default"].createElement(react_router_dom_1.Link, {
     to: "/"
   }, "Home")), react_1["default"].createElement("li", null, react_1["default"].createElement(react_router_dom_1.Link, {
-    to: "/about"
-  }, "About")), react_1["default"].createElement("li", null, react_1["default"].createElement(react_router_dom_1.Link, {
-    to: "/users"
-  }, "Users")))), react_1["default"].createElement(react_router_dom_1.Switch, null, react_1["default"].createElement(react_router_dom_1.Route, {
-    path: "/about"
-  }, react_1["default"].createElement(About, null)), react_1["default"].createElement(react_router_dom_1.Route, {
-    path: "/users"
-  }, react_1["default"].createElement(Users, null)), react_1["default"].createElement(react_router_dom_1.Route, {
+    to: "/login"
+  }, "Login")), react_1["default"].createElement("li", null, react_1["default"].createElement(react_router_dom_1.Link, {
+    to: "/help"
+  }, "Help")))), react_1["default"].createElement(react_router_dom_1.Switch, null, react_1["default"].createElement(react_router_dom_1.Route, {
     path: "/"
-  }, react_1["default"].createElement(Home, null)))));
+  }, react_1["default"].createElement(tasks_1["default"], null)), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "/login"
+  }, react_1["default"].createElement(login_1["default"], null)), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "/help"
+  }, react_1["default"].createElement(help_1["default"], null)))));
 };
-
-function Home() {
-  return react_1["default"].createElement("h2", null, "Home");
-}
-
-function About() {
-  return react_1["default"].createElement("h2", null, "About");
-}
-
-function Users() {
-  return react_1["default"].createElement("h2", null, "Users");
-}
 
 exports.default = router;
 
