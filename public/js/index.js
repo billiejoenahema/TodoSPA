@@ -243,7 +243,63 @@ Object.defineProperty(exports, "__esModule", ({
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var TaskPage = function TaskPage() {
-  return react_1["default"].createElement("h1", null, "Task Page");
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("form", {
+    className: "input-form"
+  }, react_1["default"].createElement("div", {
+    className: "inner"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    className: "input",
+    placeholder: "TODO\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
+    value: ""
+  }), react_1["default"].createElement("button", {
+    className: "btn is-primary"
+  }, "\u8FFD\u52A0"))), react_1["default"].createElement("div", {
+    className: "inner"
+  }, react_1["default"].createElement("ul", {
+    className: "task-list"
+  }, react_1["default"].createElement("li", null, react_1["default"].createElement("label", {
+    className: "checkbox-label"
+  }, react_1["default"].createElement("input", {
+    type: "checkbox",
+    className: "checkbox-input"
+  })), react_1["default"].createElement("div", null, react_1["default"].createElement("span", null, "\u65B0\u3057\u3044TODO")), react_1["default"].createElement("button", {
+    className: "btn is-delete"
+  }, "\u524A\u9664")), react_1["default"].createElement("li", null, react_1["default"].createElement("label", {
+    className: "checkbox-label"
+  }, react_1["default"].createElement("input", {
+    type: "checkbox",
+    className: "checkbox-input"
+  })), react_1["default"].createElement("form", null, react_1["default"].createElement("input", {
+    type: "text",
+    className: "input",
+    value: "\u7DE8\u96C6\u4E2D\u306ETODO"
+  })), react_1["default"].createElement("button", {
+    className: "btn"
+  }, "\u66F4\u65B0")), react_1["default"].createElement("li", {
+    className: "done"
+  }, react_1["default"].createElement("label", {
+    className: "checkbox-label"
+  }, react_1["default"].createElement("input", {
+    type: "checkbox",
+    className: "checkbox-input"
+  })), react_1["default"].createElement("div", null, react_1["default"].createElement("span", null, "\u5B9F\u884C\u3057\u305FTODO")), react_1["default"].createElement("button", {
+    className: "btn is-delete"
+  }, "\u524A\u9664")), react_1["default"].createElement("li", null, react_1["default"].createElement("label", {
+    className: "checkbox-label"
+  }, react_1["default"].createElement("input", {
+    type: "checkbox",
+    className: "checkbox-input"
+  })), react_1["default"].createElement("div", null, react_1["default"].createElement("span", null, "\u30B4\u30DF\u6368\u3066")), react_1["default"].createElement("button", {
+    className: "btn is-delete"
+  }, "\u524A\u9664")), react_1["default"].createElement("li", null, react_1["default"].createElement("label", {
+    className: "checkbox-label"
+  }, react_1["default"].createElement("input", {
+    type: "checkbox",
+    className: "checkbox-input"
+  })), react_1["default"].createElement("div", null, react_1["default"].createElement("span", null, "\u6383\u9664")), react_1["default"].createElement("button", {
+    className: "btn is-delete"
+  }, "\u524A\u9664")))));
 };
 
 exports.default = TaskPage;
