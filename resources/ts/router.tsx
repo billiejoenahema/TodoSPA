@@ -13,19 +13,13 @@ const router = () => {
   return (
     <BrowserRouter>
       <div>
-        <nav>
+        <header className="global-head">
           <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/help">Help</Link>
-            </li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/help">Help</Link></li>
           </ul>
-        </nav>
+        </header>
         <Switch>
           <Route path="/">
             <TaskPage />
