@@ -280,19 +280,24 @@ var login_1 = __importDefault(__webpack_require__(/*! ./pages/login */ "./resour
 var help_1 = __importDefault(__webpack_require__(/*! ./pages/help */ "./resources/ts/pages/help/index.tsx"));
 
 var router = function router() {
-  return react_1["default"].createElement(react_router_dom_1.BrowserRouter, null, react_1["default"].createElement("div", null, react_1["default"].createElement("nav", null, react_1["default"].createElement("ul", null, react_1["default"].createElement("li", null, react_1["default"].createElement(react_router_dom_1.Link, {
+  return react_1["default"].createElement(react_router_dom_1.BrowserRouter, null, react_1["default"].createElement("header", {
+    className: "global-head"
+  }, react_1["default"].createElement("ul", null, react_1["default"].createElement("li", null, react_1["default"].createElement(react_router_dom_1.Link, {
     to: "/"
   }, "Home")), react_1["default"].createElement("li", null, react_1["default"].createElement(react_router_dom_1.Link, {
     to: "/login"
   }, "Login")), react_1["default"].createElement("li", null, react_1["default"].createElement(react_router_dom_1.Link, {
     to: "/help"
   }, "Help")))), react_1["default"].createElement(react_router_dom_1.Switch, null, react_1["default"].createElement(react_router_dom_1.Route, {
+    exact: true,
     path: "/"
   }, react_1["default"].createElement(tasks_1["default"], null)), react_1["default"].createElement(react_router_dom_1.Route, {
+    exact: true,
     path: "/login"
   }, react_1["default"].createElement(login_1["default"], null)), react_1["default"].createElement(react_router_dom_1.Route, {
+    exact: true,
     path: "/help"
-  }, react_1["default"].createElement(help_1["default"], null)))));
+  }, react_1["default"].createElement(help_1["default"], null))));
 };
 
 exports.default = router;

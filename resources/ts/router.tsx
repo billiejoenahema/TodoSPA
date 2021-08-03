@@ -12,26 +12,24 @@ import HelpPage from './pages/help'
 const router = () => {
   return (
     <BrowserRouter>
-      <div>
-        <header className="global-head">
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/help">Help</Link></li>
-          </ul>
-        </header>
-        <Switch>
-          <Route path="/">
-            <TaskPage />
-          </Route>
-          <Route path="/login">
-            <LoginPage />
-          </Route>
-          <Route path="/help">
-            <HelpPage />
-          </Route>
-        </Switch>
-      </div>
+      <header className="global-head">
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/login">Login</Link></li>
+          <li><Link to="/help">Help</Link></li>
+        </ul>
+      </header>
+      <Switch>
+        <Route exact path="/">
+          <TaskPage />
+        </Route>
+        <Route exact path="/login">
+          <LoginPage />
+        </Route>
+        <Route exact path="/help">
+          <HelpPage />
+        </Route>
+      </Switch>
     </BrowserRouter>
   )
 }
