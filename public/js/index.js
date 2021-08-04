@@ -214,7 +214,28 @@ Object.defineProperty(exports, "__esModule", ({
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var LoginPage = function LoginPage() {
-  return react_1["default"].createElement("h1", null, "Login Page");
+  return react_1["default"].createElement("div", {
+    className: "login-page"
+  }, react_1["default"].createElement("div", {
+    className: "login-panel"
+  }, react_1["default"].createElement("form", null, react_1["default"].createElement("div", {
+    className: "input-group"
+  }, react_1["default"].createElement("label", null, "\u30E1\u30FC\u30EB\u30A2\u30C9\u30EC\u30B9"), react_1["default"].createElement("input", {
+    type: "email",
+    className: "input"
+  })), react_1["default"].createElement("div", {
+    className: "input-group"
+  }, react_1["default"].createElement("label", null, "\u30D1\u30B9\u30EF\u30FC\u30C9"), react_1["default"].createElement("input", {
+    type: "password",
+    className: "input"
+  })), react_1["default"].createElement("button", {
+    type: "submit",
+    className: "btn"
+  }, "\u30ED\u30B0\u30A4\u30F3"))), react_1["default"].createElement("div", {
+    className: "links"
+  }, react_1["default"].createElement("a", {
+    href: "#"
+  }, "\u30D8\u30EB\u30D7")));
 };
 
 exports.default = LoginPage;
