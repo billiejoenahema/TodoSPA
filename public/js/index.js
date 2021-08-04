@@ -185,7 +185,7 @@ Object.defineProperty(exports, "__esModule", ({
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var HelpPage = function HelpPage() {
-  return react_1["default"].createElement("h1", null, "Help Page");
+  return react_1["default"].createElement("div", null, react_1["default"].createElement("h1", null, "\u30D8\u30EB\u30D7"), react_1["default"].createElement("p", null, "\u4F7F\u3044\u65B9\u3092\u89E3\u8AAC\u3057\u307E\u3059\u3002", react_1["default"].createElement("br", null), "\u3053\u306E\u30B5\u30A4\u30C8\u306F\u30ED\u30B0\u30A4\u30F3\u304C\u5FC5\u8981\u3067\u3059\u3002"));
 };
 
 exports.default = HelpPage;
