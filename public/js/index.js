@@ -2280,10 +2280,50 @@ exports.default = LoginPage;
 
 /***/ }),
 
-/***/ "./resources/ts/pages/tasks/index.tsx":
-/*!********************************************!*\
-  !*** ./resources/ts/pages/tasks/index.tsx ***!
-  \********************************************/
+/***/ "./resources/ts/pages/tasks/TaskInput.tsx":
+/*!************************************************!*\
+  !*** ./resources/ts/pages/tasks/TaskInput.tsx ***!
+  \************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var TaskInput = function TaskInput() {
+  return react_1["default"].createElement("form", {
+    className: "input-form"
+  }, react_1["default"].createElement("div", {
+    className: "inner"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    className: "input",
+    placeholder: "TODO\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
+    defaultValue: ""
+  }), react_1["default"].createElement("button", {
+    className: "btn is-primary"
+  }, "\u8FFD\u52A0")));
+};
+
+exports.default = TaskInput;
+
+/***/ }),
+
+/***/ "./resources/ts/pages/tasks/TaskList.tsx":
+/*!***********************************************!*\
+  !*** ./resources/ts/pages/tasks/TaskList.tsx ***!
+  \***********************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -2303,7 +2343,7 @@ var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/r
 
 var TaskQuery_1 = __webpack_require__(/*! ../../queries/TaskQuery */ "./resources/ts/queries/TaskQuery.ts");
 
-var TaskPage = function TaskPage() {
+var TaskList = function TaskList() {
   var _a = TaskQuery_1.useTasks(),
       tasks = _a.data,
       status = _a.status;
@@ -2326,18 +2366,7 @@ var TaskPage = function TaskPage() {
     }, "\u767B\u9332\u3055\u308C\u305FTODO\u306F\u3042\u308A\u307E\u305B\u3093\u3002");
   }
 
-  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("form", {
-    className: "input-form"
-  }, react_1["default"].createElement("div", {
-    className: "inner"
-  }, react_1["default"].createElement("input", {
-    type: "text",
-    className: "input",
-    placeholder: "TODO\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
-    defaultValue: ""
-  }), react_1["default"].createElement("button", {
-    className: "btn is-primary"
-  }, "\u8FFD\u52A0"))), react_1["default"].createElement("div", {
+  return react_1["default"].createElement("div", {
     className: "inner"
   }, react_1["default"].createElement("ul", {
     className: "task-list"
@@ -2352,7 +2381,40 @@ var TaskPage = function TaskPage() {
     })), react_1["default"].createElement("div", null, react_1["default"].createElement("span", null, task.title)), react_1["default"].createElement("button", {
       className: "btn is-delete"
     }, "\u524A\u9664"));
-  }))));
+  })));
+};
+
+exports.default = TaskList;
+
+/***/ }),
+
+/***/ "./resources/ts/pages/tasks/index.tsx":
+/*!********************************************!*\
+  !*** ./resources/ts/pages/tasks/index.tsx ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var TaskInput_1 = __importDefault(__webpack_require__(/*! ./TaskInput */ "./resources/ts/pages/tasks/TaskInput.tsx"));
+
+var TaskList_1 = __importDefault(__webpack_require__(/*! ./TaskList */ "./resources/ts/pages/tasks/TaskList.tsx"));
+
+var TaskPage = function TaskPage() {
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(TaskInput_1["default"], null), react_1["default"].createElement(TaskList_1["default"], null));
 };
 
 exports.default = TaskPage;
