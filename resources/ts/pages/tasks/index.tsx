@@ -1,21 +1,10 @@
 import React from 'react'
-import axios from 'axios'
-import { useQuery } from 'react-query'
-
-type Task = {
-  id: number
-  title: string
-  is_done: boolean
-  created_at: Date
-  updated_at: Date
-}
+import { useTasks } from '../../queries/TaskQuery'
 
 const TaskPage: React.VFC = () => {
 
-  const { data: tasks, status } = useQuery('tasks', async () => {
-    const { data } = await axios.get<Task[]>('api/tasks')
-    return data
-  })
+  const { data: tasks, status } = useTasks()
+
 
   if (status === 'loading') {
     return (<div className="loader"></div>)
