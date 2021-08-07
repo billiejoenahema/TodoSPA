@@ -1,5 +1,6 @@
 import React from 'react'
-import { useTasks } from '../../queries/TaskQuery'
+import { useTasks } from '../../../queries/TaskQuery'
+import TaskItem from './TaskItem'
 
 const TaskList: React.VFC = () => {
 
@@ -19,13 +20,7 @@ const TaskList: React.VFC = () => {
     <div className="inner">
       <ul className="task-list">
         {tasks && tasks.map((task) => (
-          <li key={task.id}>
-            <label className="checkbox-label">
-              <input type="checkbox" className="checkbox-input" />
-            </label>
-            <div><span>{task.title}</span></div>
-            <button className="btn is-delete">削除</button>
-          </li>
+          <TaskItem task={task} />
         ))}
       </ul>
     </div>
