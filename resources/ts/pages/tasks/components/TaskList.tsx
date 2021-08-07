@@ -20,7 +20,7 @@ const TaskList: React.VFC = () => {
     <div className="inner">
       <ul className="task-list">
         {tasks && tasks.map((task) => (
-          <TaskItem task={task} />
+          <TaskItem key={task.id} task={task} />
         ))}
       </ul>
     </div>
