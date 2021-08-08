@@ -14,7 +14,21 @@ const useUpdateDoneTask = () => {
       queryClient.invalidateQueries('tasks')
     },
     onError: () => {
-      toast.error('更新に失敗しました。')
+      toast.error('更新に失敗しました')
+    }
+  }
+  )
+}
+
+const useCreateTask = () => {
+  const queryClient = useQueryClient()
+  return useMutation(api.createTask, {
+    onSuccess: () => {
+      queryClient.invalidateQueries('tasks')
+      toast.success('登録に成功しました')
+    },
+    onError: () => {
+      toast.error('登録に失敗しました')
     }
   }
   )
@@ -22,5 +36,6 @@ const useUpdateDoneTask = () => {
 
 export {
   useTasks,
-  useUpdateDoneTask
+  useUpdateDoneTask,
+  useCreateTask
 }
