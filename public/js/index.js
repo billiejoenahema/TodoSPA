@@ -2646,8 +2646,18 @@ var useCreateTask = function useCreateTask() {
       queryClient.invalidateQueries('tasks');
       react_toastify_1.toast.success('登録に成功しました');
     },
-    onError: function onError() {
-      react_toastify_1.toast.error('登録に失敗しました');
+    onError: function onError(error) {
+      var _a, _b;
+
+      if ((_a = error.response) === null || _a === void 0 ? void 0 : _a.data.errors) {
+        Object.values((_b = error.response) === null || _b === void 0 ? void 0 : _b.data.errors).map(function (messages) {
+          messages.map(function (message) {
+            react_toastify_1.toast.error(message);
+          });
+        });
+      } else {
+        react_toastify_1.toast.error('登録に失敗しました');
+      }
     }
   });
 };
