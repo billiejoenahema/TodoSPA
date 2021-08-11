@@ -9,9 +9,10 @@ class LoginController extends Controller
 {
     /**
      * @param  Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
+     * @throws Exception
      */
-    public function login(Request $request)
+    public function login(Request $request): JsonResponse
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
@@ -21,24 +22,22 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return response()->json(Auth::user());
+            return new JsonResponse(['message' => 'ログインしました']);
         }
 
-        return response()->json([], 401);
+        throw new Exception('ログインに失敗しました。再度お試しください');
     }
 
     /**
      * @param  Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function logout(Request $request)
+    public function logout(Request $request) :JsonResponse
     {
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
-        return response()->json(true);
+        return new JsonResponse(['message' => 'ログアウトしました']);
     }
 }
