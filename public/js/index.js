@@ -2601,7 +2601,7 @@ var LoginPage = function LoginPage() {
   }, "\u30ED\u30B0\u30A4\u30F3"))), react_1["default"].createElement("div", {
     className: "links"
   }, react_1["default"].createElement("a", {
-    href: "#"
+    href: "/help"
   }, "\u30D8\u30EB\u30D7")));
 };
 
