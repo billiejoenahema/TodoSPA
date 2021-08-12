@@ -55,7 +55,7 @@ const LoginPage: React.VFC = () => {
           <button type="submit" className="btn">ログイン</button>
         </form>
       </div>
-      <div className="links"><a href="#">ヘルプ</a></div>
+      <div className="links"><a href="/help">ヘルプ</a></div>
     </div>
   )
 }
