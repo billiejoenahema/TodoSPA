@@ -1,39 +1,28 @@
-import React, { useState } from 'react'
 import axios from 'axios'
+import React, { useState, useEffect } from 'react'
+import { useLogin } from '../../queries/AuthQuery'
 
 const LoginPage: React.VFC = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const login = useLogin()
+  const [email, setEmail] = useState('admin@example.com')
+  const [password, setPassword] = useState('123456789')
 
-  const login = async (e: React.FormEvent<HTMLElement>) => {
+  useEffect(() => {
+    axios.get('/api/user')
+      .then((res) => {
+        console.log(res.data)
+      })
+  }, [])
+
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // ログイン時にCSRFトークンを初期化
-    axios.get('/sanctum/csrf-cookie').then(response => {
-      axios
-        .post('/api/login', {
-          email,
-          password
-        })
-        .then(res => {
-          console.log(res.data)
-          if (res.data.result) {
-            console.log('ログイン成功')
-          } else {
-            console.log(res.data.message)
-            console.log('ログイン失敗')
-          }
-        })
-        .catch(err => {
-          console.log(err.response)
-          console.log('ログイン失敗')
-        })
-    })
+    login.mutate({ email, password })
   }
 
   return (
     <div className="login-page">
       <div className="login-panel">
-        <form onSubmit={login}>
+        <form onSubmit={handleLogin}>
           <div className="input-group">
             <label>メールアドレス</label>
             <input
