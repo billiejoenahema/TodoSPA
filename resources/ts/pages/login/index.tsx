@@ -7,13 +7,6 @@ const LoginPage: React.VFC = () => {
   const [email, setEmail] = useState('admin@example.com')
   const [password, setPassword] = useState('123456789')
 
-  useEffect(() => {
-    axios.get('/api/user')
-      .then((res) => {
-        console.log(res.data)
-      })
-  }, [])
-
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     login.mutate({ email, password })

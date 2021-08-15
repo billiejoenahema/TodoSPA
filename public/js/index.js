@@ -2756,17 +2756,9 @@ var __generator = this && this.__generator || function (thisArg, body) {
   }
 };
 
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-
-var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
 
 var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
@@ -2782,12 +2774,6 @@ var LoginPage = function LoginPage() {
   var _b = react_1.useState('123456789'),
       password = _b[0],
       setPassword = _b[1];
-
-  react_1.useEffect(function () {
-    axios_1["default"].get('/api/user').then(function (res) {
-      console.log(res.data);
-    });
-  }, []);
 
   var handleLogin = function handleLogin(e) {
     return __awaiter(void 0, void 0, void 0, function () {
