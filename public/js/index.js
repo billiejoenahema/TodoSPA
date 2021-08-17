@@ -1965,6 +1965,8 @@ var react_toastify_1 = __webpack_require__(/*! react-toastify */ "./node_modules
 
 __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
 
+var AuthContext_1 = __webpack_require__(/*! ./hooks/AuthContext */ "./resources/ts/hooks/AuthContext.tsx");
+
 var App = function App() {
   var queryClient = new react_query_1.QueryClient({
     defaultOptions: {
@@ -1976,11 +1978,11 @@ var App = function App() {
       }
     }
   });
-  return react_1["default"].createElement(react_query_1.QueryClientProvider, {
+  return react_1["default"].createElement(AuthContext_1.AuthProvider, null, react_1["default"].createElement(react_query_1.QueryClientProvider, {
     client: queryClient
   }, react_1["default"].createElement(router_1["default"], null), react_1["default"].createElement(react_toastify_1.ToastContainer, {
     hideProgressBar: true
-  }));
+  })));
 };
 
 exports.default = App;
@@ -2507,6 +2509,86 @@ var deleteTask = function deleteTask(id) {
 };
 
 exports.deleteTask = deleteTask;
+
+/***/ }),
+
+/***/ "./resources/ts/hooks/AuthContext.tsx":
+/*!********************************************!*\
+  !*** ./resources/ts/hooks/AuthContext.tsx ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.useAuth = exports.AuthProvider = void 0;
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var AuthContext = react_1.createContext({
+  isAuth: false,
+  setIsAuth: function setIsAuth() {}
+});
+
+var AuthProvider = function AuthProvider(_a) {
+  var children = _a.children;
+
+  var _b = react_1.useState(false),
+      isAuth = _b[0],
+      setIsAuth = _b[1];
+
+  return react_1["default"].createElement(AuthContext.Provider, {
+    value: {
+      isAuth: isAuth,
+      setIsAuth: setIsAuth
+    }
+  }, children);
+};
+
+exports.AuthProvider = AuthProvider;
+
+var useAuth = function useAuth() {
+  return react_1.useContext(AuthContext);
+};
+
+exports.useAuth = useAuth;
 
 /***/ }),
 
@@ -3220,6 +3302,8 @@ var api = __importStar(__webpack_require__(/*! ../api/AuthAPI */ "./resources/ts
 
 var react_toastify_1 = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
 
+var AuthContext_1 = __webpack_require__(/*! ../hooks/AuthContext */ "./resources/ts/hooks/AuthContext.tsx");
+
 var useUser = function useUser() {
   return react_query_1.useQuery('users', api.getUser);
 };
@@ -3227,9 +3311,12 @@ var useUser = function useUser() {
 exports.useUser = useUser;
 
 var useLogin = function useLogin() {
+  var setIsAuth = AuthContext_1.useAuth().setIsAuth;
   return react_query_1.useMutation(api.login, {
     onSuccess: function onSuccess(user) {
-      console.log(user);
+      if (user) {
+        setIsAuth(true);
+      }
     },
     onError: function onError() {
       react_toastify_1.toast.error('ログインに失敗しました');
@@ -3240,11 +3327,12 @@ var useLogin = function useLogin() {
 exports.useLogin = useLogin;
 
 var useLogout = function useLogout() {
+  var setIsAuth = AuthContext_1.useAuth().setIsAuth;
   return react_query_1.useMutation(api.logout, {
     onSuccess: function onSuccess(user) {
-      console.log({
-        user: user
-      });
+      if (user) {
+        setIsAuth(false);
+      }
     },
     onError: function onError() {
       react_toastify_1.toast.error('ログアウトに失敗しました');
@@ -3408,6 +3496,22 @@ exports.useDeleteTask = useDeleteTask;
 "use strict";
 
 
+var __assign = this && this.__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+
+      for (var p in s) {
+        if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+      }
+    }
+
+    return t;
+  };
+
+  return __assign.apply(this, arguments);
+};
+
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
   if (k2 === undefined) k2 = k;
   Object.defineProperty(o, k2, {
@@ -3462,24 +3566,68 @@ var login_1 = __importDefault(__webpack_require__(/*! ./pages/login */ "./resour
 
 var help_1 = __importDefault(__webpack_require__(/*! ./pages/help */ "./resources/ts/pages/help/index.tsx"));
 
+var AuthQuery_1 = __webpack_require__(/*! ./queries/AuthQuery */ "./resources/ts/queries/AuthQuery.ts");
+
+var AuthContext_1 = __webpack_require__(/*! ./hooks/AuthContext */ "./resources/ts/hooks/AuthContext.tsx");
+
 var router = function router() {
-  react_1.useEffect(function () {}, []);
-  return react_1["default"].createElement(react_router_dom_1.BrowserRouter, null, react_1["default"].createElement("header", {
+  var logout = AuthQuery_1.useLogout();
+
+  var _a = AuthContext_1.useAuth(),
+      isAuth = _a.isAuth,
+      setIsAuth = _a.setIsAuth;
+
+  var _b = AuthQuery_1.useUser(),
+      isLoading = _b.isLoading,
+      authUser = _b.data;
+
+  react_1.useEffect(function () {
+    if (authUser) {
+      setIsAuth(true);
+    }
+  }, [authUser]);
+
+  var GuardRoute = function GuardRoute(props) {
+    if (!isAuth) return react_1["default"].createElement(react_router_dom_1.Redirect, {
+      to: "/login"
+    });
+    return react_1["default"].createElement(react_router_dom_1.Route, __assign({}, props));
+  };
+
+  var LoginRoute = function LoginRoute(props) {
+    if (isAuth) return react_1["default"].createElement(react_router_dom_1.Redirect, {
+      to: "/"
+    });
+    return react_1["default"].createElement(react_router_dom_1.Route, __assign({}, props));
+  };
+
+  var navigation = react_1["default"].createElement("header", {
     className: "global-head"
   }, react_1["default"].createElement("ul", null, react_1["default"].createElement("li", null, react_1["default"].createElement(react_router_dom_1.Link, {
     to: "/"
   }, "Home")), react_1["default"].createElement("li", null, react_1["default"].createElement(react_router_dom_1.Link, {
-    to: "/login"
-  }, "Login")), react_1["default"].createElement("li", null, react_1["default"].createElement(react_router_dom_1.Link, {
     to: "/help"
-  }, "Help")))), react_1["default"].createElement(react_router_dom_1.Switch, null, react_1["default"].createElement(react_router_dom_1.Route, {
+  }, "Help")), react_1["default"].createElement("li", {
+    onClick: function onClick() {
+      return logout.mutate();
+    }
+  }, react_1["default"].createElement("span", null, "Logout"))));
+  var loginNavigation = react_1["default"].createElement("header", {
+    className: "global-head"
+  }, react_1["default"].createElement("ul", null, react_1["default"].createElement("li", null, react_1["default"].createElement(react_router_dom_1.Link, {
+    to: "/help"
+  }, "Help")), react_1["default"].createElement("li", null, react_1["default"].createElement(react_router_dom_1.Link, {
+    to: "/login"
+  }, "Login"))));
+  if (isLoading) return react_1["default"].createElement("div", {
+    className: "loader"
+  });
+  return react_1["default"].createElement(react_router_dom_1.BrowserRouter, null, isAuth ? navigation : loginNavigation, react_1["default"].createElement(react_router_dom_1.Switch, null, react_1["default"].createElement(GuardRoute, {
     exact: true,
     path: "/"
-  }, react_1["default"].createElement(tasks_1["default"], null)), react_1["default"].createElement(react_router_dom_1.Route, {
-    exact: true,
+  }, react_1["default"].createElement(tasks_1["default"], null)), react_1["default"].createElement(LoginRoute, {
     path: "/login"
   }, react_1["default"].createElement(login_1["default"], null)), react_1["default"].createElement(react_router_dom_1.Route, {
-    exact: true,
     path: "/help"
   }, react_1["default"].createElement(help_1["default"], null))));
 };
