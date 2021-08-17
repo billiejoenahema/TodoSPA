@@ -10,6 +10,7 @@ import {
 import TaskPage from './pages/tasks'
 import LoginPage from './pages/login'
 import HelpPage from './pages/help'
+import NotFoundPage from './pages/error'
 import { useLogout, useUser } from './queries/AuthQuery'
 import { useAuth } from './hooks/AuthContext'
 
@@ -68,6 +69,7 @@ const router = () => {
         <Route path="/help">
           <HelpPage />
         </Route>
+        <Route component={NotFoundPage} />
       </Switch>
     </BrowserRouter>
   )

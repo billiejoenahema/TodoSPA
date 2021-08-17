@@ -2621,6 +2621,41 @@ react_dom_1["default"].render(react_1["default"].createElement(App_1["default"],
 
 /***/ }),
 
+/***/ "./resources/ts/pages/error/index.tsx":
+/*!********************************************!*\
+  !*** ./resources/ts/pages/error/index.tsx ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+var NotFoundPage = function NotFoundPage() {
+  return react_1["default"].createElement("div", {
+    className: "align-center"
+  }, react_1["default"].createElement("h1", null, "404 Not Found"), react_1["default"].createElement("p", null, "\u30DA\u30FC\u30B8\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\u3067\u3057\u305F\u3002"), react_1["default"].createElement(react_router_dom_1.Link, {
+    to: "/"
+  }, "Home\u3078\u623B\u308B"));
+};
+
+exports.default = NotFoundPage;
+
+/***/ }),
+
 /***/ "./resources/ts/pages/help/index.tsx":
 /*!*******************************************!*\
   !*** ./resources/ts/pages/help/index.tsx ***!
@@ -3566,6 +3601,8 @@ var login_1 = __importDefault(__webpack_require__(/*! ./pages/login */ "./resour
 
 var help_1 = __importDefault(__webpack_require__(/*! ./pages/help */ "./resources/ts/pages/help/index.tsx"));
 
+var error_1 = __importDefault(__webpack_require__(/*! ./pages/error */ "./resources/ts/pages/error/index.tsx"));
+
 var AuthQuery_1 = __webpack_require__(/*! ./queries/AuthQuery */ "./resources/ts/queries/AuthQuery.ts");
 
 var AuthContext_1 = __webpack_require__(/*! ./hooks/AuthContext */ "./resources/ts/hooks/AuthContext.tsx");
@@ -3629,7 +3666,9 @@ var router = function router() {
     path: "/login"
   }, react_1["default"].createElement(login_1["default"], null)), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "/help"
-  }, react_1["default"].createElement(help_1["default"], null))));
+  }, react_1["default"].createElement(help_1["default"], null)), react_1["default"].createElement(react_router_dom_1.Route, {
+    component: error_1["default"]
+  })));
 };
 
 exports.default = router;
