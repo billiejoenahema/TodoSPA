@@ -2,7 +2,7 @@ import React from 'react'
 import TaskInput from './components/TaskInput'
 import TaskList from './components/TaskList'
 
-const TaskPage: React.VFC = () => {
+const TaskPage: React.VFC = React.memo(() => {
 
   return (
     <>
@@ -10,6 +10,6 @@ const TaskPage: React.VFC = () => {
       <TaskList />
     </>
   )
-}
+})
 
 export default TaskPage
