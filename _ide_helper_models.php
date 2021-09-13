@@ -17,6 +17,7 @@ namespace App\Models{
  * @property int $id
  * @property string $title
  * @property bool $is_done
+ * @property int $user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Database\Factories\TaskFactory factory(...$parameters)
@@ -28,6 +29,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereIsDone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereUserId($value)
  */
 	class Task extends \Eloquent {}
 }
