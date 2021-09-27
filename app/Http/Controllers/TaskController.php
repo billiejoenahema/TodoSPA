@@ -10,14 +10,6 @@ use Illuminate\Support\Facades\Auth;
 class TaskController extends Controller
 {
 
-  public function __construct()
-  {
-        // middlewareの引数を配列にしないとエラーになる
-        $this->middleware(['can:checkUser', 'task'])->only([
-          'updateDone', 'update', 'destroy'
-        ]);
-    }
-
     /**
      * Task一覧
      *
