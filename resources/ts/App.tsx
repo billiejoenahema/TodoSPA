@@ -1,22 +1,21 @@
-import React from 'react'
-import Router from './router'
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import { AuthProvider } from './hooks/AuthContext'
+import React from 'react';
+import Router from './router';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { AuthProvider } from './hooks/AuthContext';
 
 const App = () => {
-
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        retry: false
+        retry: false,
       },
       mutations: {
-        retry: false
-      }
-    }
-  })
+        retry: false,
+      },
+    },
+  });
 
   return (
     <AuthProvider>
@@ -25,6 +24,7 @@ const App = () => {
         <ToastContainer hideProgressBar={true} />
       </QueryClientProvider>
     </AuthProvider>
-  )
-}
-export default App
+  );
+};
+
+export default App;

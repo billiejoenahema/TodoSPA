@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
-import { useLogin } from '../../queries/AuthQuery'
+import React, { useState } from 'react';
+import { useLogin } from '../../queries/AuthQuery';
 
 const LoginPage: React.VFC = () => {
-  const login = useLogin()
-  const [email, setEmail] = useState('admin@example.com')
-  const [password, setPassword] = useState('123456789')
+  const login = useLogin();
+  const [email, setEmail] = useState('admin@example.com');
+  const [password, setPassword] = useState('123456789');
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    login.mutate({ email, password })
-  }
+    e.preventDefault();
+    login.mutate({ email, password });
+  };
 
   return (
     <div className="login-page">
@@ -33,12 +33,16 @@ const LoginPage: React.VFC = () => {
               className="input"
             />
           </div>
-          <button type="submit" className="btn">ログイン</button>
+          <button type="submit" className="btn">
+            ログイン
+          </button>
         </form>
       </div>
-      <div className="links"><a href="/help">ヘルプ</a></div>
+      <div className="links">
+        <a href="/help">ヘルプ</a>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;

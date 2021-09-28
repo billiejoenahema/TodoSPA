@@ -1,44 +1,37 @@
-import { useQuery, useMutation } from 'react-query'
-import * as api from '../api/AuthAPI'
-import { toast } from 'react-toastify'
-import { useAuth } from '../hooks/AuthContext'
+import { useQuery, useMutation } from 'react-query';
+import * as api from '../api/AuthAPI';
+import { toast } from 'react-toastify';
+import { useAuth } from '../hooks/AuthContext';
 
 const useUser = () => {
-  return (
-    useQuery('users', api.getUser)
-  )
-}
+  return useQuery('users', api.getUser);
+};
 const useLogin = () => {
-  const { setIsAuth } = useAuth()
+  const { setIsAuth } = useAuth();
   return useMutation(api.login, {
     onSuccess: (user) => {
       if (user) {
-        setIsAuth(true)
+        setIsAuth(true);
       }
     },
     onError: () => {
-      toast.error('ログインに失敗しました')
-    }
-  }
-  )
-}
+      toast.error('ログインに失敗しました');
+    },
+  });
+};
+
 const useLogout = () => {
-  const { setIsAuth } = useAuth()
+  const { setIsAuth } = useAuth();
   return useMutation(api.logout, {
     onSuccess: (user) => {
       if (user) {
-        setIsAuth(false)
+        setIsAuth(false);
       }
     },
     onError: () => {
-      toast.error('ログアウトに失敗しました')
-    }
-  }
-  )
-}
+      toast.error('ログアウトに失敗しました');
+    },
+  });
+};
 
-export {
-  useUser,
-  useLogin,
-  useLogout,
-}
+export { useUser, useLogin, useLogout };

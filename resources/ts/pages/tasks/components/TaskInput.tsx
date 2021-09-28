@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
-import { useCreateTask } from '../../../queries/TaskQuery'
+import React, { useState } from 'react';
+import { useCreateTask } from '../../../queries/TaskQuery';
 
 const TaskInput: React.VFC = () => {
-  const [title, setTitle] = useState('')
-  const createTask = useCreateTask()
+  const [title, setTitle] = useState('');
+  const createTask = useCreateTask();
 
   const handleSubmit = (e: React.FormEvent<HTMLElement>) => {
-    e.preventDefault()
-    createTask.mutate(title)
-    setTitle('')
+    e.preventDefault();
+    createTask.mutate(title);
+    setTitle('');
+  };
 
-  }
   return (
     <form className="input-form" onSubmit={handleSubmit}>
       <div className="inner">
@@ -19,11 +19,12 @@ const TaskInput: React.VFC = () => {
           className="input"
           placeholder="TODOを入力してください。"
           value={title}
-          onChange={(e) => setTitle(e.target.value)} />
+          onChange={(e) => setTitle(e.target.value)}
+        />
         <button className="btn is-primary">追加</button>
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default TaskInput
+export default TaskInput;
