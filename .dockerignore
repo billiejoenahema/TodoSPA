@@ -1,0 +1,10 @@
+node_modules
+vendor
+npm-debug.log
+debug.log
+.env
+.idea
+.vscode
+.git
+.gitignore
+storage/app/public
