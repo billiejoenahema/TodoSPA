@@ -3275,10 +3275,9 @@ var TaskInput_1 = __importDefault(__webpack_require__(/*! ./components/TaskInput
 
 var TaskList_1 = __importDefault(__webpack_require__(/*! ./components/TaskList */ "./resources/ts/pages/tasks/components/TaskList.tsx"));
 
-var TaskPage = function TaskPage() {
+var TaskPage = react_1["default"].memo(function () {
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(TaskInput_1["default"], null), react_1["default"].createElement(TaskList_1["default"], null));
-};
-
+});
 exports.default = TaskPage;
 
 /***/ }),

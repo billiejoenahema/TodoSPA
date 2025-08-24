@@ -20,7 +20,7 @@ COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
-COPY . /var/www
+COPY ../src /var/www
 
 # Laravel用パーミッション
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
